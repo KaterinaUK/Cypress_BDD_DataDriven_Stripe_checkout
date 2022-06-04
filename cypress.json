@@ -1,0 +1,18 @@
+{
+    "chromeWebSecurity": false,
+    "testFiles": "**/*.{feature,features}",
+    "baseUrl": "https://checkout.stripe.dev/preview",
+    "blockHosts": [
+      "*.google-analytics.com",
+      "*.googletagmanager.com",
+      "*.doubleclick.net",
+      "*.hotjar.com",
+      "*.hotjar.io",
+      "*.getsitecontrol.com",
+      "*.getsitectrl.com",
+      "*.kustomerapp.com"
+    ],
+    "viewportWidth": 1366,
+    "viewportHeight": 768,
+    "defaultCommandTimeout": 8000
+}

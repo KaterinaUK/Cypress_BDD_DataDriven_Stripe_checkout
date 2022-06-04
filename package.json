@@ -1,0 +1,38 @@
+{
+  "name": "stripe_checkout",
+  "version": "1.0.0",
+  "description": "Payment page automation",
+  "main": "index.js",
+  "scripts": {
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaterinaUK/Stripe_checkout.git"
+  },
+  "author": "Katerina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KaterinaUK/Stripe_checkout/issues"
+  },
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": [
+      "cypress/integration/common/**/*.{js,ts}",
+      "cypress/integration/[filepath].{js,ts}",
+      "cypress/integration/[filepath]/**/*.{js,ts}"
+    ]
+  },
+  "homepage": "https://github.com/KaterinaUK/Stripe_checkout#readme",
+  "devDependencies": {
+    "cypress": "^9.6.1",
+    "cypress-iframe": "^1.0.1",
+    "typescript": "^4.6.4"
+  },
+  "dependencies": {
+    "@badeball/cypress-cucumber-preprocessor": "^10.0.1",
+    "@cypress/browserify-preprocessor": "^3.0.2",
+    "cypress-failed-log": "^2.9.5",
+    "cypress-xpath": "^1.6.2"
+  }
+}
