@@ -19,5 +19,6 @@ When(/^I fill in a card details$/, (table: DataTable) => {
       .type(row.CVC);
     stripeCheckout.getcardExpiry()
       .type(row.ExpiryDate);
-  });
+
+})
 })

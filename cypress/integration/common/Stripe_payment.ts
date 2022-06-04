@@ -30,3 +30,14 @@ And('I provide my email, name and postal code', () => {
   stripeCheckout.getPostalCode()
   .type("NJ 07002");
 })
+
+And('I click on pay button', () => {
+  stripeCheckout.getPayButton()
+})
+
+Then('I verify that it was a success', () => {
+  cy.on('window:alert', (txt) => {
+    expect(txt).to.contains('Payment success')   // verification step for checking that succcess message is displayed to user
+    cy.screenshot();
+})
+})

@@ -53,7 +53,11 @@ class StripeCheckout
    getPayButton()
    {
        return cy.iframe()
-       .get("#submit")
+       .trigger('keydown', {
+        key: 'Enter',
+      });
+  //       .getByTestId('[data-testid=hosted-payment-submit-button]')
+  //       .should('be.visible')
    }
 }
 
