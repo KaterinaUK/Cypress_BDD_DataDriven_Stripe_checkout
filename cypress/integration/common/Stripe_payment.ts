@@ -32,6 +32,7 @@ And('I provide my email, name and postal code', () => {
 })
 
 And('I click on pay button', () => {
+  cy.wait(2000)
   stripeCheckout.getPayButton()
 })
 
