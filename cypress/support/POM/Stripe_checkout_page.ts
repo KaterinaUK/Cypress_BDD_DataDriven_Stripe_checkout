@@ -53,9 +53,10 @@ class StripeCheckout
    getPayButton()
    {
        return cy.iframe()
-       .find('button')
+       .find('button').contains('Pay')
         .each(($el) => {
-            cy.wrap($el).click({force: true})
+            cy.wrap($el)
+            .click({force: true})
   })
    }
 }

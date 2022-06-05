@@ -24,7 +24,7 @@ When('Select UK location', ()=>{
 
 And('I provide my email, name and postal code', () => {
   stripeCheckout.getEmailField()
-  .type('myemail@email.com');
+  .type('myemail@email.com').should('have.value', 'myemail@email.com');
   stripeCheckout.getNameonCard()
   .type('CypressIsGreat');
   stripeCheckout.getPostalCode()
