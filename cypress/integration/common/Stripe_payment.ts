@@ -3,6 +3,7 @@
 import { Before, When, Then, Given, DataTable, And } from "@badeball/cypress-cucumber-preprocessor";
 import StripeCheckout from '../../support/POM/Stripe_checkout_page';
 
+var _ = require('lodash');
 const url = 'https://checkout.stripe.dev/preview'
 const stripeCheckout  = new StripeCheckout();
 
@@ -22,11 +23,27 @@ When('Select UK location', ()=>{
   .click();
 })
 
-And('I provide my email, name and postal code', () => {
+And('I type in my email, name and postal code', () => {
   stripeCheckout.getEmailField()
   .type('myemail@email.com');
   stripeCheckout.getNameonCard()
-  .type('CypressIsGreat');
+  .type('Mrs Katerina Cypress');
   stripeCheckout.getPostalCode()
-  .type("NJ 07002");
+  .type("07002");
+})
+
+When(/^I fill in card details and click pay$/, (table: DataTable) => {
+    console.log("Start of data table test");
+
+    var rows = table.hashes();
+    _.each(rows, function(row){
+    console.log(row.ID + row.TestDesc + row.CardNumber + row.CVC + row.ExpiryDate + row.ExptOutcome1 + row.ExptOutcome2);
+    
+    stripeCheckout.getCardNumberField()
+      .type(row.CardNumber);
+    stripeCheckout.getcardCvc()
+      .type(row.CVC);
+    stripeCheckout.getcardExpiry()
+      .type(row.ExpiryDate);
+  });
 })
