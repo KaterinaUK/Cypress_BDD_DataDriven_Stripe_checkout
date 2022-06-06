@@ -1,4 +1,4 @@
-# Stripe Checkout :moneybag: - Cypress / TypeScript / BDD / Data Driven Testing / POM / Reusability :rocket:
+# Stripe Checkout  :moneybag: - Cypress / TypeScript / BDD / Data Driven Testing / POM / Reusability  :rocket:
 
 Take your seat, hold on, and see the test infrastructure that every serious tech business needs.
 
@@ -17,12 +17,12 @@ This demo test suite, runs a set of Cypress tests on the Stripe Hosted Checkout 
 
 NB: actually, you would not run e2e tests on the stripe checkout hosted by Stripe (you would mock or stub the response), rather if a custom payment flow was chosen implementing form elements directly into our own application with custom styles etc. Custom payment flow integration requires end-to-end testing to make sure everything works as expected and we get a smooth user experience.
 
-## Risks :bangbang:
+## Risks  :bangbang:
 
 - chromeWebSecurity has been disabled (to help with testing stripe iframes), this comes with some consequences (e.g. we might miss some issues that we’d normally catch in a browser with web security enabled).
 - viewport is set to mobile view, as this page is dynamic, tests should be run both on mobile and desktop views.
 
-## Objectives :open_book:
+## Objectives  :open_book:
 #### 1. Tests written from User-centric view point. The more your tests resemble the way your software is used, the more confidence they can give you.
   - [Cypress Testing Library](https://testing-library.com/docs/cypress-testing-library/intro) - helps you test UI components in a user-centric way, see the core `dom-testing-library` for much more detail. You write tests that mimic the way that the user would use your software.
 
@@ -45,7 +45,7 @@ CI Intergation - GitHub Actions, repeatable test suite at present runs nightly, 
 #### 6. Speed of execution
 - Mix of Page Objects and [App Actions](https://applitools.com/blog/page-objects-app-actions-cypress/), where required to set the application state in the desired state immediately, for the purpose of that test.
 
-## Installation 
+## Installation  :safety_vest:
 ### Prerequisites
 
 You will need:
@@ -58,7 +58,7 @@ You will need:
 
    `npm install`
 
-### ...drum roll :drum:, finally...
+### ...drum roll  :drum:, finally...
 
 To start the tests, run the following command in root terminal:
 
@@ -66,7 +66,7 @@ To start the tests, run the following command in root terminal:
 
 Click on the feature file to run the test.
 
-## Debugging failed CI tests :bug:
+## Debugging failed CI tests  :bug:
 
 There are a few tools available to help you debug failed tests on CI:
 
@@ -74,11 +74,11 @@ There are a few tools available to help you debug failed tests on CI:
 - The result of the Cypress run is saved as an artifact in GitHub, you can find it on the summary page of the Action workflow. Inside the zip file you will find screenshots, videos, and logs of any failed tests.
 - If you suspect a test failure might be caused by a graphql api issue you can log every request & response by adding the command `cy.logApiRequests()` to a `Before()` block in your test. Note: this will make the logs very verbose.
 
-## Video recording of running tests :tv:
+## Video recording of running tests  :tv:
 
 https://user-images.githubusercontent.com/68429856/171468050-d77d72e4-9bb8-487c-972c-d4473539d6be.mp4
 
-## Future enhancements :white_check_mark:
+## Future enhancements  :white_check_mark:
 
 1. Slack reporting
 2. Cypress Dashboard (or similar)
