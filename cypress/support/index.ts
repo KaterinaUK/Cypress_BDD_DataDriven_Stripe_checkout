@@ -19,9 +19,20 @@ import './commands';
 declare global {
   namespace Cypress {
     interface Chainable {
+      getDemoBody(): Chainable;
       getByTestId(testId: string): Chainable<JQuery<HTMLElement>>;
       getIframe(selector: string): Chainable<JQuery<HTMLElement>>;
       logApiRequests(): Chainable;
+
+      /**
+       * dom-testing-library helpers for Cypress
+       *
+       * Configure dom-testing-library through Cypress object. Wraps `configure(config)`
+       *
+       * @see https://github.com/testing-library/cypress-testing-library#usage
+       * @see https://github.com/testing-library/dom-testing-library#table-of-contents
+       */
+       configureCypressTestingLibrary(): Chainable<void>
     }
   }
 }

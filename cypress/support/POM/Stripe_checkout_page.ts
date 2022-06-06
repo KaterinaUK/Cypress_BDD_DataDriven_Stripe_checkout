@@ -50,15 +50,12 @@ class StripeCheckout
         .find('#cardCvc')
     }
    
-   getPayButton()
+   clickPayButton()
    {
-       return cy.iframe()
-       .find('button').contains('Pay')
-        .each(($el) => {
-            cy.wrap($el)
-            .click({force: true})
-  })
-   }
+       return cy.iframe('#checkout-demo')
+       .find('.SubmitButton').click()
+    }
 }
+
 
 export default StripeCheckout;

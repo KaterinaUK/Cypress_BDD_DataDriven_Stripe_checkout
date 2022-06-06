@@ -1,6 +1,18 @@
-# Stripe_checkout - Cypress / BDD / Data Driven Test / POM
+# Stripe_checkout - Cypress / TypeScript / BDD / Data Driven Testing / POM / Reusability
 
 This demo test suite, runs a set of Cypress tests on the Stripe Checkout pages.
+
+This demo showcases many test infrastructure best practices, including (but not limited to):
+
+- Cypress
+- Cypress Testing Library
+- cypress-iframe Plugin
+- TypeScript
+- Page Object Model
+- Behaviour Driven Development / Cucumber Style Syntax
+- Data Driven Testing
+- Reusable Functions
+- Reusable Test Steps
 
 NB: actually, you would not run e2e tests on stripe checkout hosted by Stripe (you would mock or stub the response), rather if a custom payment flow was chosen implementing form elements directly into our own application with custom styles etc. Custom payment flow integration requires end-to-end testing to make sure everything works as expected and we get a smooth user experience.
 
@@ -17,13 +29,6 @@ Web Locators have been carefully selected to resist DOM structure changes. The a
 This demo makes use of Data Driven Tests.
 
 A plugin for Cypress called [cypress-cucumber-preprocessor](https://github.com/badeball/cypress-cucumber-preprocessor) is used to transform `.feature` files into runnable tests. The plugin is configured to look for step defintions in a sibling TypeScript file of the same name. Any files added to the `integration/common` folder will be included with every feature test.
-
-This test suite makes use of:
-
-- cypress-iframe
-- BDD
-- Page Object Model
-- Data Driven Testing
 
 ## Prerequisites
 

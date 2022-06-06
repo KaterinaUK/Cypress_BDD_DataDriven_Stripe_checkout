@@ -25,25 +25,55 @@ When('Select UK location', ()=>{
 
 And('I type in my email, name and postal code', () => {
   stripeCheckout.getEmailField()
-  .type('myemail@email.com');
+  .type('myemail@email.com').should('have.value', 'myemail@email.com');
   stripeCheckout.getNameonCard()
   .type('Mrs Katerina Cypress');
   stripeCheckout.getPostalCode()
   .type("07002");
 })
 
+// this is reusable, so long as the data table headers are labelled the same as below
 When(/^I fill in card details and click pay$/, (table: DataTable) => {
     console.log("Start of data table test");
-
     var rows = table.hashes();
     _.each(rows, function(row){
     console.log(row.ID + row.TestDesc + row.CardNumber + row.CVC + row.ExpiryDate + row.ExptOutcome1 + row.ExptOutcome2);
-    
     stripeCheckout.getCardNumberField()
       .type(row.CardNumber);
     stripeCheckout.getcardCvc()
       .type(row.CVC);
     stripeCheckout.getcardExpiry()
       .type(row.ExpiryDate);
+    stripeCheckout.clickPayButton()
+    })
   });
-})
+
+Then('I verify that payment was successful', () => {
+  cy.getDemoBody()
+		.find(".SubmitButton--processing")
+		.should("be.visible");
+	cy.getDemoBody()
+		.find("#cardNumber")
+		.should("have.attr", "aria-invalid", "false");
+	cy.getDemoBody()
+    .find(".SubmitButton--complete")
+    .should("not.exist");
+	cy.getDemoBody()
+    .find(".ConfirmPayment-Error")
+    .should("not.exist");
+});
+
+Then('I verify that payment was declined', () => {
+	cy.getDemoBody()
+    .contains('Your card was declined. Please try a different card.')
+    .should('be.visible')
+    .and('have.text', 'Your card was declined. Please try a different card.');
+	// 	.find(".SubmitButton--processing")
+	// 	.should("be.visible");
+	// cy.getDemoBody()
+  //   .find(".SubmitButton--complete")
+  //   .should("not.exist");
+	// cy.getDemoBody()
+	// 	.find("#cardNumber")
+	// 	.should("have.attr", "aria-invalid", "true");
+});

@@ -4,27 +4,34 @@ Feature: Checkout Page
 
 Background: I load the application on the checkout page
 
-  Scenario: Make a transaction through hosted Stripe
-      When  I type in my email, name and postal code
-      Then  I fill in card details and click pay
+  Scenario: Successful transaction through hosted Stripe
+      When I type in my email, name and postal code
+      And  I fill in card details and click pay
          | ID | TestDesc | CardNumber  | CVC | ExpiryDate | ExptOutcome1 | ExptOutcome2 |
-         | 1 | Payment Success | 4242424242424242 | 888  | 1250  |  Payment success |  Payment success |
-         | 2 | Authentication 3D Secure - Complete | 4000000000003220 | 888  | 1250  |  3D Secure 2 Test Page | Payment success |
-         | 3 | Authentication 3D Secure - Fail | 4000000000003220 | 888  | 1250  |  3D Secure 2 Test Page | unable to authenticate |
-         | 4 | Authentication 3D Secure - Cancel | 4000000000003220 | 888  | 1250  |  3D Secure 2 Test Page | unable to authenticate |
-         | 5 | Payment Declined | 4000000000000002 | 888  | 1250  |  3D Secure 2 Test Page | unable to authenticate |
+         | 1 | Payment Success | 4242424242424242 | 888  | 1250  |  Processing... |  Payment success |
+      Then I verify that payment was successful
 
-  # Scenario: Pay a valid Mastercard using Stripe
-  #     Given  I load the application on the checkout page
-  #     When  I provide my email, name and postal code
-  #     Then  I fill in a card details
-  #         | CardNumber  | CVC | ExpiryDate |
-  #         | 5555555555554444 | 128  | 0325  |
-      
+  Scenario: Decline transaction through hosted Stripe
+      When  I type in my email, name and postal code
+      And  I fill in card details and click pay
+         | ID | TestDesc | CardNumber  | CVC | ExpiryDate | ExptOutcome1 | ExptOutcome2 |
+         | 5 | Payment Declined | 4000000000000002 | 888  | 1250  |  Your card was declined. Please try a different card. | unable to authenticate |
+      Then I verify that payment was declined
 
-  # Scenario: Pay with declined card using Stripe
-  #     Given  I load the application on the checkout page
-  #     When  I provide my email, name and postal code
-  #     Then  I fill in a card details
-  #         | CardNumber  | CVC | ExpiryDate |
-  #         | 4000000000000002       | 888       | 1225  |
+  #   Scenario: Successful transaction through hosted Stripe - 3D Secure
+  #     When  I type in my email, name and postal code
+  #     Then  I fill in card details and click pay
+  #        | ID | TestDesc | CardNumber  | CVC | ExpiryDate | ExptOutcome1 | ExptOutcome2 |
+  #        | 2 | Authentication 3D Secure - Complete | 4000000000003220 | 888  | 1250  |  3D Secure 2 Test Page | Payment success |
+
+  #   Scenario: Decline transaction through hosted Stripe - 3D Secure
+  #     When  I type in my email, name and postal code
+  #     Then  I fill in card details and click pay
+  #        | ID | TestDesc | CardNumber  | CVC | ExpiryDate | ExptOutcome1 | ExptOutcome2 |
+  #        | 3 | Authentication 3D Secure - Fail | 4000000000003220 | 888  | 1250  |  3D Secure 2 Test Page | unable to authenticate |
+
+  #   Scenario: Cancel transaction through hosted Stripe - 3D Secure
+  #     When  I type in my email, name and postal code
+  #     Then  I fill in card details and click pay
+  #        | ID | TestDesc | CardNumber  | CVC | ExpiryDate | ExptOutcome1 | ExptOutcome2 |
+  #        | 4 | Authentication 3D Secure - Cancel | 4000000000003220 | 888  | 1250  |  3D Secure 2 Test Page | unable to authenticate |
