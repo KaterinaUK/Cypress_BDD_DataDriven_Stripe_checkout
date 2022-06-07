@@ -55,17 +55,6 @@ class StripeCheckout
        return cy.iframe('#checkout-demo')
        .find('.SubmitButton').click()
     }
-
-    getCompleteButton()
-    {
-      return cy.get('iframe[name^="__privateStripeFrame"]:eq(0)', { timeout: 20000 })
-      .iframe()
-      .find('iframe#challengeFrame')
-      .iframe()
-      .find('#test-source-authorize-3ds')
-      .click()
-      }
-    }
-
+}
 
 export default StripeCheckout;

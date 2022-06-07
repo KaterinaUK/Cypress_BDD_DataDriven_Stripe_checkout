@@ -76,15 +76,16 @@ There are a few tools available to help you debug failed tests on CI:
 
 ## Video recording of running tests  :tv:
 
-https://user-images.githubusercontent.com/68429856/171468050-d77d72e4-9bb8-487c-972c-d4473539d6be.mp4
 
 ## Future enhancements  :white_check_mark:
 
-1. Slack reporting
-2. Cypress Dashboard (or similar)
-3. Code coverage
-4. More extensive set of edge test cases (not the purpose of this demo)
-5. Run tests on Desktop & Mobile viewports
-6. Consider use of docker for test infra in CI
-7. Load balanced, parralised running of tests in CI
-8. 
+- Slack reporting
+- Cypress Dashboard (or similar)
+- Code coverage
+- More extensive set of edge test cases (not the purpose of this demo)
+- Run tests on Desktop & Mobile viewports
+- Consider use of docker for test infra in CI
+- Load balanced, parralised running of tests in CI
+- add mochaawesome reporting
+
+

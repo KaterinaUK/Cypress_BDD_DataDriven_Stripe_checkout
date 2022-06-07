@@ -1,6 +1,7 @@
 {
     "chromeWebSecurity": false,
     "testFiles": "**/*.{feature,features}",
+    "ignoreTestFiles": ["*.js", "*.ts", "*.md"],
     "baseUrl": "https://checkout.stripe.dev/preview",
     "blockHosts": [
       "*.google-analytics.com",
@@ -12,7 +13,8 @@
       "*.getsitectrl.com",
       "*.kustomerapp.com"
     ],
-    "viewportWidth": 480,
-    "viewportHeight": 853,
-    "defaultCommandTimeout": 12000
+    "viewportWidth": 1280,
+    "viewportHeight": 720,
+    "defaultCommandTimeout": 30000,
+    "video": false
 }

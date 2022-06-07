@@ -17,17 +17,11 @@ Given("I load the application on the checkout page", () => {
   cy.log.name;
 });
 
-When('Select UK location', ()=>{
-  cy.get('.LocationDropdown > .DropdownSelect-Trigger > .DropdownSelect-Label > .DropdownSelect-LabelLeft')
-  .contains('United Kingdom')
-  .click();
-})
-
 And('I type in my email, name and postal code', () => {
   stripeCheckout.getEmailField()
   .type('myemail@email.com').should('have.value', 'myemail@email.com');
   stripeCheckout.getNameonCard()
-  .type('Katerina and Cypress');
+  .type('Mrs Katerina Cypress');
   stripeCheckout.getPostalCode()
   .type("07002");
 })
@@ -37,7 +31,7 @@ When(/^I fill in card details and click pay$/, (table: DataTable) => {
     console.log("Start of data table test");
     var rows = table.hashes();
     _.each(rows, function(row){
-    console.log(row.ID + row.TestDesc + row.CardNumber + row.CVC + row.ExpiryDate + row.ExptOutcome1 + row.ExptOutcome2);
+    console.log(row.ID + row.TestDesc + row.CardNumber + row.CVC + row.ExpiryDate);
     stripeCheckout.getCardNumberField()
       .type(row.CardNumber);
     stripeCheckout.getcardCvc()
@@ -78,6 +72,7 @@ Then('I verify that payment was declined', () => {
 	// 	.should("have.attr", "aria-invalid", "true");
 });
 
-Then('I procced with 3D Secure 2 authentication', () => {
-  stripeCheckout.getCompleteButton()
+And('I {string} 3D Secure authentication', (authorization) => {
+	cy.select3dSecureOption(authorization);
+	cy.get("#challengeFrame").should("not.exist");
 });

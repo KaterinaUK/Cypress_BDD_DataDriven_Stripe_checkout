@@ -20,6 +20,8 @@ declare global {
   namespace Cypress {
     interface Chainable {
       getDemoBody(): Chainable;
+      get3dIframeBody(): Chainable;
+      select3dSecureOption(authorization: any): Chainable<JQuery<HTMLElement>>;
       getByTestId(testId: string): Chainable<JQuery<HTMLElement>>;
       getIframe(selector: string): Chainable<JQuery<HTMLElement>>;
       logApiRequests(): Chainable;
