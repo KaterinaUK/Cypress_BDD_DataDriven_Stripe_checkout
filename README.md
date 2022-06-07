@@ -2,6 +2,8 @@
 
 Take your seat, hold on, and see the test infrastructure that every serious tech business needs.
 
+Test cases + mind map, can be seen here: [Manual Task](Stripe_checkout_payment/manual_task)
+
 This demo test suite, runs a set of Cypress tests on the Stripe Hosted Checkout pages, its purpose is to showcase many test infrastructure best practices. It makes use of:
 
 - Cypress
