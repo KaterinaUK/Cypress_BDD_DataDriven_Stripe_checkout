@@ -76,6 +76,7 @@ There are a few tools available to help you debug failed tests on CI:
 
 ## Video recording of running tests  :tv:
 
+https://user-images.githubusercontent.com/68429856/172486815-f4725617-380f-4ad4-8d60-ff5737909f91.mp4
 
 ## Future enhancements  :white_check_mark:
 
