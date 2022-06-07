@@ -62,14 +62,6 @@ Then('I verify that payment was declined', () => {
     .contains('Your card was declined. Please try a different card.')
     .should('be.visible')
     .and('have.text', 'Your card was declined. Please try a different card.');
-	// 	.find(".SubmitButton--processing")
-	// 	.should("be.visible");
-	// cy.getDemoBody()
-  //   .find(".SubmitButton--complete")
-  //   .should("not.exist");
-	// cy.getDemoBody()
-	// 	.find("#cardNumber")
-	// 	.should("have.attr", "aria-invalid", "true");
 });
 
 And('I {string} 3D Secure authentication', (authorization) => {
