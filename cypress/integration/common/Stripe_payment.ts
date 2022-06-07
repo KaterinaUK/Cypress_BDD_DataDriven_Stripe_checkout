@@ -27,7 +27,7 @@ And('I type in my email, name and postal code', () => {
   stripeCheckout.getEmailField()
   .type('myemail@email.com').should('have.value', 'myemail@email.com');
   stripeCheckout.getNameonCard()
-  .type('Mrs Katerina Cypress');
+  .type('Katerina and Cypress');
   stripeCheckout.getPostalCode()
   .type("07002");
 })
@@ -76,4 +76,8 @@ Then('I verify that payment was declined', () => {
 	// cy.getDemoBody()
 	// 	.find("#cardNumber")
 	// 	.should("have.attr", "aria-invalid", "true");
+});
+
+Then('I procced with 3D Secure 2 authentication', () => {
+  stripeCheckout.getCompleteButton()
 });

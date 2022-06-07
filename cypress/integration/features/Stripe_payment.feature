@@ -18,11 +18,12 @@ Background: I load the application on the checkout page
          | 5 | Payment Declined | 4000000000000002 | 888  | 1250  |  Your card was declined. Please try a different card. | unable to authenticate |
       Then I verify that payment was declined
 
-  #   Scenario: Successful transaction through hosted Stripe - 3D Secure
-  #     When  I type in my email, name and postal code
-  #     Then  I fill in card details and click pay
-  #        | ID | TestDesc | CardNumber  | CVC | ExpiryDate | ExptOutcome1 | ExptOutcome2 |
-  #        | 2 | Authentication 3D Secure - Complete | 4000000000003220 | 888  | 1250  |  3D Secure 2 Test Page | Payment success |
+    Scenario: Successful transaction through hosted Stripe - 3D Secure
+      When  I type in my email, name and postal code
+      Then  I fill in card details and click pay
+         | ID | TestDesc | CardNumber  | CVC | ExpiryDate | ExptOutcome1 | ExptOutcome2 |
+         | 2 | Authentication 3D Secure - Complete | 4000000000003220 | 888  | 1250  |  3D Secure 2 Test Page | Payment success |
+      Then  I procced with 3D Secure 2 authentication
 
   #   Scenario: Decline transaction through hosted Stripe - 3D Secure
   #     When  I type in my email, name and postal code
